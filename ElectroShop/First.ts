@@ -5,7 +5,7 @@ const currency: string = "JOD";
 
 let availableProducts: number = 5;
 let isOpen: boolean = true;
-let products: String[] = [ "Laptop", "Mobile Phone", "Headphones", "Keyboard", "Mouse"] ;
+let productNames: String[] = [ "Laptop", "Mobile Phone", "Headphones", "Keyboard", "Mouse"] ;
 let productDetails: (String|number|boolean)[] = [ "Laptop", 950, true,
                                                   "Mobile Phone", 600, true,
                                                   "Headphones", 100, true,
@@ -29,7 +29,7 @@ if (productPrice > 500) {
 
     console.log("Expensive Product");
 } 
-else if( 100 < productPrice && productPrice > 500) {
+else if( 100 < productPrice && productPrice < 500) {
 
     console.log("Medium Price");
 }
@@ -40,7 +40,7 @@ else {
 
 /*-------------------------------------------------------*/
 
-for (let p of products)
+for (let p of productNames)
 {
     console.log(p);
 }
@@ -119,3 +119,47 @@ function calculateTotalPrice(...productPrices: number[]): number {
 }
 
 console.log(calculateTotalPrice(100, 200, 50, 150));
+
+
+
+let products = [
+    {
+        name: "Laptop",
+        description: "Core i5, 8GB RAM",
+        price: 900
+    },
+
+    {
+        name: "Headphones",
+        description: "Wireless Bluetooth headphones",
+        price: 75
+    },
+    {
+        name: "Keyboard",
+        description: "Mechanical gaming keyboard",
+        price: 100
+    }
+];
+
+function loadProducts(): void {
+
+    let container = document.getElementById("products");
+
+    if (container == null) {
+        return;
+    }
+
+    for (let i = 0; i < products.length; i++) {
+
+        container.innerHTML += `
+            <div>
+                <h3>${products[i].name}</h3>
+                <p>${products[i].description}</p>
+                <p>Price: ${products[i].price} USD</p>
+            </div>
+            <hr>
+        `;
+
+    }
+
+}

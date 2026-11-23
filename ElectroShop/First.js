@@ -4,7 +4,7 @@ const storeDescription = "Your favorite electronic store";
 const currency = "JOD";
 let availableProducts = 5;
 let isOpen = true;
-let products = ["Laptop", "Mobile Phone", "Headphones", "Keyboard", "Mouse"];
+let productNames = ["Laptop", "Mobile Phone", "Headphones", "Keyboard", "Mouse"];
 let productDetails = ["Laptop", 950, true,
     "Mobile Phone", 600, true,
     "Headphones", 100, true,
@@ -21,14 +21,14 @@ let productPrice = 900;
 if (productPrice > 500) {
     console.log("Expensive Product");
 }
-else if (100 < productPrice && productPrice > 500) {
+else if (100 < productPrice && productPrice < 500) {
     console.log("Medium Price");
 }
 else {
     console.log("Affordable Product");
 }
 /*-------------------------------------------------------*/
-for (let p of products) {
+for (let p of productNames) {
     console.log(p);
 }
 /*---------------------------------------------*/
@@ -74,3 +74,40 @@ function calculateTotalPrice(...productPrices) {
     return total;
 }
 console.log(calculateTotalPrice(100, 200, 50, 150));
+const products = [
+    {
+        name: "Laptop",
+        description: "Core i5, 8GB RAM",
+        price: 650
+    },
+    {
+        name: "Headphones",
+        description: "Wireless Bluetooth headphones",
+        price: 75
+    },
+    {
+        name: "Keyboard",
+        description: "Mechanical gaming keyboard",
+        price: 45
+    }
+];
+function loadProducts() {
+    const productsContainer = document.getElementById("products");
+    if (!productsContainer) {
+        return;
+    }
+    productsContainer.replaceChildren();
+    products.forEach((product) => {
+        const card = document.createElement("div");
+        const name = document.createElement("h2");
+        name.textContent = product.name;
+        const description = document.createElement("p");
+        description.textContent = product.description;
+        const price = document.createElement("p");
+        price.textContent = "Price: $" + product.price;
+        card.appendChild(name);
+        card.appendChild(description);
+        card.appendChild(price);
+        productsContainer.appendChild(card);
+    });
+}
