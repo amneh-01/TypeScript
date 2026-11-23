@@ -94,7 +94,7 @@ function displayStoreMessage(message: string): void {
 displayStoreMessage("Welcome to ElectroShop");
 
 
-function displayProductInfo( productName: string, productPrice: number, productDescription?: string, currency: string = "JOD" ): void {
+function displayProductInfo( productDescription?: string ,productName: string, productPrice: number, currency: string = "JOD" ): void {
 
     console.log("Product Name:", productName);
     console.log("Product Price:", productPrice, currency);

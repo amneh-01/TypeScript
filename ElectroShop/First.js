@@ -74,11 +74,11 @@ function calculateTotalPrice(...productPrices) {
     return total;
 }
 console.log(calculateTotalPrice(100, 200, 50, 150));
-const products = [
+let products = [
     {
         name: "Laptop",
         description: "Core i5, 8GB RAM",
-        price: 650
+        price: 900
     },
     {
         name: "Headphones",
@@ -88,26 +88,22 @@ const products = [
     {
         name: "Keyboard",
         description: "Mechanical gaming keyboard",
-        price: 45
+        price: 100
     }
 ];
 function loadProducts() {
-    const productsContainer = document.getElementById("products");
-    if (!productsContainer) {
+    let container = document.getElementById("products");
+    if (container == null) {
         return;
     }
-    productsContainer.replaceChildren();
-    products.forEach((product) => {
-        const card = document.createElement("div");
-        const name = document.createElement("h2");
-        name.textContent = product.name;
-        const description = document.createElement("p");
-        description.textContent = product.description;
-        const price = document.createElement("p");
-        price.textContent = "Price: $" + product.price;
-        card.appendChild(name);
-        card.appendChild(description);
-        card.appendChild(price);
-        productsContainer.appendChild(card);
-    });
+    for (let i = 0; i < products.length; i++) {
+        container.innerHTML += `
+            <div>
+                <h3>${products[i].name}</h3>
+                <p>${products[i].description}</p>
+                <p>Price: ${products[i].price} USD</p>
+            </div>
+            <hr>
+        `;
+    }
 }
